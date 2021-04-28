@@ -1,9 +1,10 @@
 .ContactList__item {
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
   outline: 1px solid grey;
   padding: 10px;
-  width: 400px;
+  width: 500px;
 }
 
 .ContactList__item:not(:last-child) {

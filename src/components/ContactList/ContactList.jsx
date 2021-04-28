@@ -14,10 +14,14 @@ const useStyles = makeStyles(theme => ({
   list: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '300px',
+
+    width: '400px',
     border: '1px solid grey',
     borderRadius: '4px',
     padding: '10px',
+  },
+  number: {
+    paddingRight: '20px',
   },
 }));
 
@@ -25,12 +29,12 @@ const ContactList = ({ items, onDeleteContact, children }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <h3 className="title">ContactList</h3>
+      <h3 className="title">Contacts</h3>
       {children}
       {items.map(contact => (
         <li key={contact.id} className={styles.ContactList__item}>
           <p>{contact.name}</p>
-          <p>{contact.number}</p>
+          <p className={classes.number}>{contact.number}</p>
           <Button
             variant="contained"
             type="button"

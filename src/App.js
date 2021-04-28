@@ -4,6 +4,9 @@ import Section from './components/share/Section';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
+import Modal from './components/Modal';
+import IconButton from './components/IconButton';
+import { ReactComponent as AddIcon } from './icons/add.svg';
 
 class App extends Component {
   state = {
@@ -25,6 +28,13 @@ class App extends Component {
     if (this.state.contacts !== prevState.contacts) {
       // console.log('contacts was updated');
       localStorage.setItem('conts', JSON.stringify(this.state.contacts));
+    }
+
+    if (
+      this.state.contacts.length > prevState.contacts.length &&
+      prevState.contacts.length !== 0
+    ) {
+      this.toggleModal();
     }
   }
 
@@ -70,15 +80,32 @@ class App extends Component {
 
     return (
       <Section>
-        <ContactForm getData={this.getDataFromContactForm} />
+        {/* Modal */}
+        <IconButton onClick={this.toggleModal} arial-label="Add contact">
+          Create contact
+          <AddIcon width="40" height="40" fill="green" />
+        </IconButton>
+        {this.state.showModal && (
+          <Modal onClose={this.toggleModal}>
+            <h2>Create new contact</h2>
+            <button type="button" onClick={this.toggleModal}>
+              Close
+            </button>
+            <ContactForm getData={this.getDataFromContactForm} />
+          </Modal>
+        )}
+        {/* End Modal */}
+
         <ContactList
           items={visibleContacts}
           onDeleteContact={this.deleteContact}
         >
-          <Filter
-            valueState={this.state.filter}
-            filterByName={this.changeFilter}
-          />
+          {visibleContacts.length > 0 && (
+            <Filter
+              valueState={this.state.filter}
+              filterByName={this.changeFilter}
+            />
+          )}
         </ContactList>
       </Section>
     );

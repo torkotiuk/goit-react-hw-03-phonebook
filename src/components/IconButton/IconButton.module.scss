@@ -1,0 +1,15 @@
+.IconButton {
+  margin: 0;
+  // padding: 10px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 10%;
+  color: rgb(66, 66, 66);
+  font: inherit;
+  background-color: rgb(236, 223, 223);
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
