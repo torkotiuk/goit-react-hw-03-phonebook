@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import shortid from 'shortid';
 import './ContactForm.module.scss';
+import Button from '@material-ui/core/Button';
 
 class ContactForm extends Component {
   state = {
@@ -28,7 +29,6 @@ class ContactForm extends Component {
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
-        <h3 className="title">Phonebook</h3>
         <label htmlFor={this.nameInputId} className="form__input">
           Name:
           <input
@@ -52,9 +52,17 @@ class ContactForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button className="btn" type="submit">
-          Add
-        </button>
+        <div className="btnAdd">
+          <Button
+            variant="contained"
+            type="button"
+            className="btn"
+            // eslint-disable-next-line react/jsx-no-duplicate-props
+            type="submit"
+          >
+            Add
+          </Button>
+        </div>
       </form>
     );
   }

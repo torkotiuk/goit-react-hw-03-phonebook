@@ -82,15 +82,14 @@ class App extends Component {
       <Section>
         {/* Modal */}
         <IconButton onClick={this.toggleModal} arial-label="Add contact">
-          Create contact
+          <h2>Create contact</h2>
           <AddIcon width="40" height="40" fill="green" />
         </IconButton>
         {this.state.showModal && (
           <Modal onClose={this.toggleModal}>
-            <h2>Create new contact</h2>
-            <button type="button" onClick={this.toggleModal}>
-              Close
-            </button>
+            <h2 className="title_form">Create new contact</h2>
+            {/* <button type="button_x" onClick={this.toggleModal}>
+            </button> */}
             <ContactForm getData={this.getDataFromContactForm} />
           </Modal>
         )}
