@@ -99,12 +99,17 @@ class App extends Component {
           items={visibleContacts}
           onDeleteContact={this.deleteContact}
         >
-          {visibleContacts.length > 0 && (
+          {/* {visibleContacts.length > 0 && (
             <Filter
               valueState={this.state.filter}
               filterByName={this.changeFilter}
             />
-          )}
+          )} */}
+
+          <Filter
+            valueState={this.state.filter}
+            filterByName={this.changeFilter}
+          />
         </ContactList>
       </Section>
     );
